@@ -1,0 +1,4 @@
+mvn install:install-file -Dfile=gdata-client-1.0.jar -DgroupId=com.google.data -DartifactId=gdata-client -Dversion=1.0 -Dpackaging=jar 
+mvn install:install-file -Dfile=gdata-core-1.0.jar -DgroupId=com.google.data -DartifactId=gdata-core -Dversion=1.0 -Dpackaging=jar
+mvn install:install-file -Dfile=gdata-spreadsheet-3.0.jar -DgroupId=com.google.data -DartifactId=gdata-spreadsheet -Dversion=3.0 -Dpackaging=jar
+mvn install:install-file -Dfile=gdata-spreadsheet-meta-3.0.jar -DgroupId=com.google.data -DartifactId=gdata-spreadsheet-meta -Dversion=3.0 -Dpackaging=jar

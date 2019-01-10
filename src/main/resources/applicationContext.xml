@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+	http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<bean id="tiltServiceFactory" class="org.progressivelifestyle.bustrip.consumer.service.TiltServiceFactory"/>
+	<bean id="tiltService" factory-bean="tiltServiceFactory" factory-method="getServiceForSandBox">
+<!-- 		<constructor-arg index="0" value="${tilt.api.sandbox.key}"/>
+		<constructor-arg index="1" value="${tilt.api.sandbox.secret}"/> -->
+	</bean>
+	<import resource="orm-service.xml" />
+	<context:annotation-config />
+	<context:component-scan base-package="org.progressivelifestyle.bustrip.google" />
+	<context:component-scan base-package="org.progressivelifestyle.bustrip.consumer" />
+	<context:component-scan base-package="org.progressivelifestyle.bustrip.web.dto" />
+	<jpa:repositories base-package="org.progressivelifestyle.bustrip.google.repository" />
+	<aop:aspectj-autoproxy />
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:application.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="filterAspect" class="org.progressivelifestyle.bustrip.google.EventFilter"/>
+</beans>

@@ -1,0 +1,9 @@
+{
+  "neighborhoodName" : "",
+  "information" : "",
+  "pickupName" : "",
+  "longitude" : "",
+  "latitude" : "",
+  "address" : "",
+  "pickupTime" : ""
+}
